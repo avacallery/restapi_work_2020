@@ -43,13 +43,14 @@ mongoose.connect('mongodb+srv://USERNAME:PASSWORD@cluster0-9qzld.mongodb.net/tes
     //QUERYING - finding specific properties in the JSON objects
     //How we build queries/ filter database objects 
 
-       //.find({ author: /^Mosh/ }) //regular expression - finds courses that starts with Mosh
-
+        //.find({ author: /^Mosh/ }) //regular expression - finds courses that starts with Mosh
         //.find({ author: /Hamedani$/i }) //regular expression - find courses that end with Hamedani
-
         //.find({ author: /.*Mosh.*/i }) //regular expression - you can have 0 or more characters before or after Mosh. and i means case insensitive 
 
 
+
+        //EXERCISE: Get all the published frontend and backend course sort them by their price in a descending order, pick only their name and author, and display them. 
+        
     async function getCourses() {
 
         const courses = await Course //find everything in Course and assign to courses 
