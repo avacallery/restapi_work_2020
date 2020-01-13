@@ -1,3 +1,7 @@
+
+//EXERCISE 1: Get all the published backend courses, sort them by their name, and pick only their name and author, and display them. 
+
+
 const mongoose = require('mongoose'); 
 
 mongoose.connect('mongodb+srv://USERNAME:PASSWORD@cluster0-9qzld.mongodb.net/test?retryWrites=true&w=majority', 
