@@ -24,7 +24,7 @@ const Customer = mongoose.model('Customer', new mongoose.Schema({
 })); 
 
 //HTTP methods get/put/post/delete 
-//get list of genres
+//get list of customers
 router.get('/', async (req, res) => {
     const customers = await Customer.find().sort('name'); 
     res.send(customers); 
