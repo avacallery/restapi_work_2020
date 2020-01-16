@@ -45,6 +45,24 @@ router.post('/', async (req, res) => {
         res.send(customer); 
 });
 
+async function updateCustomer(id) {
+    const customer = await Customer.findByIdAndUpdate(id, {
+        $set: {
+            author: 'Jason',
+            isGold: false, 
+            phone: "1223388"
+        }
+    }, { new: true });
+    console.log(customer);
+
+}
+
+    async function removeCustomer(id) {
+        const result = await Customer.deleteOne({ _id: id });
+        console.log(result);
+    }
+
+
 function validateCustomer(customer) {
     const schema = {
         name: Joi.string().min(5).max(50).required(),
