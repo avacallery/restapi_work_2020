@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     const { error } = validateAlbum(req.body); 
     if (error) return res.status(400).send(error.details[0].message);
     
-    let customer = new Album({ 
+    let album = new Album({ 
         title: req.body.title,
         artist: req.body.artist, 
         releaseDate: req.body.date,
