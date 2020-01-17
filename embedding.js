@@ -12,9 +12,14 @@ const authorSchema = new mongoose.Schema({
 
 const Author = mongoose.model('Author', authorSchema);
 
+//embed an author document directly inside the course document 
 const Course = mongoose.model('Course', new mongoose.Schema({
-  name: String
-}));
+  name: String,
+  author: {
+    type: authorSchema, 
+    required: true
+  }
+  }));
 
 async function createCourse(name, author) {
   const course = new Course({
@@ -31,4 +36,13 @@ async function listCourses() {
   console.log(courses);
 }
 
-createCourse('Node Course', new Author({ name: 'Mosh' }));
+async function updateAuthor(courseId) {
+  const course = await Course.update( { _id: courseId }, {
+    $unset: {
+      'author': ''
+    }
+  });
+}
+
+//createCourse('Node Course', new Author({ name: 'Mosh' }));
+updateAuthor('5e223c0874bff73784d6cb4f'); 
