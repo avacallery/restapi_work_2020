@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt'); 
-const Joi = require('Joi'); 
+const Joi = require('joi'); 
 const _ = require('lodash'); 
 const { User } = require('../models/user');
 const mongoose = require('mongoose');
@@ -18,7 +18,9 @@ router.post('/', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) return res.status(400).send('Invalid email or password.');
 
-    res.send(true); 
+    //return JSON Web token - long string that identifies a user for future api calls
+    const token = user.generateAuthToken(); 
+    res.send(token); 
 
 });
 
@@ -28,7 +30,7 @@ function validate(req) {
       password: Joi.string().min(5).max(255).required()
     };
   
-    return Joi.validate(user, schema);
+    return Joi.validate(req, schema);
   }
 
 module.exports = router;
