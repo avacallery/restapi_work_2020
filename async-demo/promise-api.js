@@ -28,4 +28,4 @@ const p2 = new Promise((resolve) => {
 //THIS OPERATION WILL RUN BOTH PROMISES AND RETURN A PROMISE!
 Promise.all([p1, p2])
     .then(result => console.log(result))
-    .catch(err => console.log('Error', err.message)); 
+    .catch(err => console.log('Error', err.message));
