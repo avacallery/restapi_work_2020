@@ -1,7 +1,7 @@
 //CHAPTER 6 - Asynchronous Javascript
 
-// //synchronous or blocking program
-// //one task must finish completing before moving onto the next task 
+// // synchronous or blocking program
+// // one task must finish completing before moving onto the next task 
 // console.log('Before'); 
 // console.log('After'); 
 
@@ -14,10 +14,7 @@
 // }, 2000); 
 // console.log('After'); 
 
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-//patterns for dealing with asynchronous code
+//three patterns for dealing with asynchronous code:
 //callbacks, promises, and async/await 
 
 console.log('Before'); 

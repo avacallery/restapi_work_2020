@@ -1,6 +1,7 @@
 //PROMISES
 
 //a JavaScript promise is an OBJECT that holds the eventual result of an async operation
+//Promises are specific to async code "we'll do this later"
 //it can result in a VALUE or an ERROR
 //this object can be in 1 of 3 states: 
 //when we create it, it will be in PENDING state. It will kick off some async operation. When it is ready it will be either FULFILLED/RESOLVED, meaning it completed successfully. Otherwise, if it went wrong, it will be in the REJECTED STATE or ERROR. 
