@@ -2,23 +2,17 @@
 
 //a JavaScript promise is an OBJECT that holds the eventual result of an async operation
 //Promises are specific to async code "we'll do this later"
-//it can result in a VALUE or an ERROR
+//when it completes, a promise can result in a VALUE or an ERROR
 //this object can be in 1 of 3 states: 
 //when we create it, it will be in PENDING state. It will kick off some async operation. When it is ready it will be either FULFILLED/RESOLVED, meaning it completed successfully. Otherwise, if it went wrong, it will be in the REJECTED STATE or ERROR. 
-
 //anywhere you have an async function that takes a callback, you should modify that function to return a PROMISE. 
 
 // const p = new Promise((resolve, reject) => {
-//     //Kick off some async work 
-//     //...
 //     setTimeout(() => {
-//         //resolve(1); 
-//         reject(new Error('message')); 
+//         resolve(1); 
+//         // reject(new Error('message')); 
 //     }, 2000);
 // }); 
-
-//When our async operation completes successfully it produces (1) as the result. 
-//Now we need to consume this promise!
 
 // p
 //     .then(result => console.log('Result', result)) 
@@ -27,9 +21,11 @@
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//REWRITE BY USING PROMISES 
+//REPLACE ALL CALLBACKS WITH PROMISES AND THEN USE PROMISES
+//because promises expose .then method, we can chain them to implement a complex async operation. 
 
-//Using CALLBACKS
+
+// // Using CALLBACKS
 console.log('Before'); 
 // getUser(1, (user) => {
 //     getRespositories(user.gitHubUsername, (repos) => {
@@ -38,17 +34,15 @@ console.log('Before');
 //         })
 //     })
 // }); 
-console.log('After'); 
 
-//Using PROMISES - because promises expose .then method, we can chain them to implement a complex async operation. 
+// // Using PROMISES
 getUser(1)
-    .then(user => getRespositories(user.gitHubUsername))
+    .then(user => getRepositories(user.gitHubUsername))
     .then(repos => getCommits(repos[0]))
     .then(commits => console.log('Commits', commits))
     .catch(err => console.log('Error', err.message)); 
 
-
-//REPLACE CALLBACK FUNCTIONS WITH PROMISES (BELOW - COMPLETED)
+    console.log('After'); 
 
 function getUser(id) {
     return new Promise((resolve, reject) => {
@@ -59,7 +53,7 @@ function getUser(id) {
     });
 }
 
-function getRespositories(username) {
+function getRepositories(username) {
     return new Promise ((resolve, reject) => {
         setTimeout(() => {
             console.log('Calling Github Api...'); 
