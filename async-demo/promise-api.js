@@ -11,9 +11,6 @@
 // const p = Promise.reject(new Error('Reason for rejection.')); 
 // p.catch(error => console.log(error)); 
 
-
-
-
 //PARALLEL PROMISES 
 //Sometimes you want to run multiple async operations in parallel, and when they all complete, you want to do something after.
 
@@ -32,7 +29,7 @@ const p2 = new Promise((resolve) => {
     }, 2000)
 });
 
-// //THIS OPERATION WILL RUN BOTH PROMISES AND RETURN A PROMISE!
+// THIS OPERATION WILL RUN BOTH PROMISES AND RETURNS A PROMISE!
 Promise.all([p1, p2])
     .then(result => console.log(result))
     .catch(err => console.log('Error', err.message));
