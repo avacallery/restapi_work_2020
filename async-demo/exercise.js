@@ -20,7 +20,7 @@ async function notificationEmail() {
         console.log('Customer: ', customer);
         if (customer.isGold) {
             const movies = await getTopMovies();
-            console.log('Movies: ', movies);
+            console.log('Customer top movies: ', movies);
             await sendEmail(customer.email, movies);
             console.log('Email sent...');
         }
@@ -45,17 +45,17 @@ function getCustomer(id) {
 }
 
 function getTopMovies() {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(['movie1', 'movie2']);
         }, 4000);
     });
-    }
+}
 
 function sendEmail(email, movies) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve();
         }, 4000);
     })
-    }
+}
