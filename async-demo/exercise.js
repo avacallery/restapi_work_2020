@@ -36,9 +36,9 @@ function getCustomer(id) {
         setTimeout(() => {
             resolve({
                 id: 1,
-                name: 'Mosh Hamedani',
+                name: 'Ava Callery',
                 isGold: true,
-                email: 'email'
+                email: 'avacallery@email.com'
             });
         }, 4000);
     });
@@ -47,7 +47,7 @@ function getCustomer(id) {
 function getTopMovies() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(['movie1', 'movie2']);
+            resolve(['Shrek', 'Shrek 2']);
         }, 4000);
     });
 }
