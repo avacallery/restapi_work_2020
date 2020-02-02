@@ -1,4 +1,4 @@
-const {User, validate} = require('../models/user');
+const {User, validate} = require('../models/user'); //import user model (user class and validate function)
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
