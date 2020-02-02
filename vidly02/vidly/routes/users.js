@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+const config = require('config'); 
 const {User, validate} = require('../models/user'); //import user model (user class and validate function)
 const mongoose = require('mongoose');
 const express = require('express');
@@ -17,7 +19,10 @@ router.post('/', async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt); 
     await user.save(); 
 
-    res.send(_.pick(user, ['_id', 'name', 'email'])); //when we call this pick method, we'll get a new object with name and email
+
+    const token = user.generateAuthToken(); 
+    //set header and send response to the client
+    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email'])); //when we call this pick method, we'll get a new object with name and email
 });
 
 module.exports = router; 
