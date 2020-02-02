@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth'); //authorization - permission to access
 const jwt = require('jsonwebtoken');
 const config = require('config'); 
 const {User, validate} = require('../models/user'); //import user model (user class and validate function)
@@ -7,6 +8,12 @@ const router = express.Router();
 const bcrypt = require('bcrypt'); 
 const _ = require('lodash'); 
 
+router.get('/me', auth, async (req, res) => {
+    const user = await (await User.findById(req.user._id)).isSelected('-password');
+    res.send(user); 
+});
+
+//create a new user 
 router.post('/', async (req, res) => {
     const { error } = validate(req.body); //validate request with Joi validate method
     if (error) return res.status(400).send(error.details[0].message);
